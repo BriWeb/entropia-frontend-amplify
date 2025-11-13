@@ -72,6 +72,7 @@ export default function LoginPage() {
           interface ValidateResponse {
             ok: boolean;
             mensaje: string;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             usuario?: any;
           }
 

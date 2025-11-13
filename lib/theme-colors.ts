@@ -1,5 +1,5 @@
 import { ThemeColors } from "@/app/types/theme-types";
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const themes: Record<string, any> = {
   Default: {
     light: {
