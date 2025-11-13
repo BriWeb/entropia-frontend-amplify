@@ -2,6 +2,7 @@
 import setGlobalColorTheme from "@/lib/theme-colors";
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import { createContext, useContext, useEffect, useState } from "react";
+import { ThemeColors, ThemeColorsStateParams } from "@/app/types/theme-types";
 
 type ThemeProviderProps = React.ComponentProps<typeof NextThemesProvider>;
 
@@ -13,7 +14,7 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
   const getSavedThemeColor = () => {
     try {
       return (localStorage.getItem("themeColor") as ThemeColors) || "Default";
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       return "Default" as ThemeColors;
     }
@@ -28,11 +29,11 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     localStorage.setItem("themeColor", themeColor);
     setGlobalColorTheme(theme as "light" | "dark", themeColor);
-
-    if (!isMounted) {
-      setIsMounted(true);
-    }
   }, [themeColor, theme]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   if (!isMounted) {
     return null;
@@ -43,8 +44,8 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
       {children}
     </ThemeContext.Provider>
   );
-};
+}
 
-export function useThemeContext(){
+export function useThemeContext() {
   return useContext(ThemeContext);
 }

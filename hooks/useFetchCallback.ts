@@ -11,7 +11,8 @@ export function useFetchCallback<T = unknown>() {
   const [loading, setLoading] = useState(false);
   // const [data, setData] = useState<unknown>(null);
   const [data, setData] = useState<T | null>(null);
-  const [error, setError] = useState<unknown>(null);
+  // const [error, setError] = useState<unknown>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   const fetchNow = useCallback(
     async ({
@@ -38,7 +39,11 @@ export function useFetchCallback<T = unknown>() {
         // setData(json);
         setData(json as T);
       } catch (error) {
-        setError(error);
+        if (error instanceof Error) {
+          setError(error);
+        } else {
+          setError(new Error("Unknown error"));
+        }
       } finally {
         setLoading(false);
       }

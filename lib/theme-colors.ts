@@ -1,4 +1,6 @@
-const themes = {
+import { ThemeColors } from "@/app/types/theme-types";
+
+const themes: Record<string, any> = {
   Default: {
     light: {
       radius: "0.5rem",

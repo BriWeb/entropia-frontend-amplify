@@ -39,14 +39,14 @@ export default function DashboardSecretaria() {
     }
   }, [data]);
 
-  const handleTurnoClick = (turno: any) => {
+  const handleTurnoClick = (turno: Turno) => {
     console.log(turno);
     const datos: TurnoSeleccionado = {
-      fecha: turno.fecha,
+      fecha: String(turno.fecha),
       horario: turno.horario,
-      horario_id: turno.horario_id,
+      horario_id: String(turno.horario_id),
       medico: turno.nombre + " " + turno.apellido,
-      medico_id: turno.medico_id,
+      medico_id: String(turno.medico_id),
     };
     setTurnoSeleccionado(datos); // 1. Guarda los datos
     setModalAbierto(true); // 2. Abre el modal

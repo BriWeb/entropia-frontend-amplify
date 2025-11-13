@@ -21,6 +21,11 @@ export default function TurnosDoctor() {
     rows: Turno[];
   }
 
+  // Type guard para asegurar que dataTurno tiene la estructura esperada
+  const isMedicoTurnoResponse = (obj: unknown): obj is MedicoTurnoResponse => {
+    return !!obj && typeof obj === "object" && "count" in obj && "rows" in obj;
+  };
+
   const {
     loading: loadingTurno,
     data: dataTurno,
@@ -28,12 +33,16 @@ export default function TurnosDoctor() {
     fetchNow,
   } = useFetchCallback<MedicoTurnoResponse>();
 
+  const turnoCount = isMedicoTurnoResponse(dataTurno) ? dataTurno.count : 0;
+  const turnosRows = isMedicoTurnoResponse(dataTurno) ? dataTurno.rows : [];
+
   interface MedicoResponse {
     id: number;
   }
 
   const usuarioStr = localStorage.getItem("usuario");
-  const { persona_id } = usuarioStr ? JSON.parse(usuarioStr) : null;
+  const usuario = usuarioStr ? JSON.parse(usuarioStr) : null;
+  const persona_id = usuario?.persona_id;
 
   const { data: dataIdMedico } = useFetch<MedicoResponse>({
     url: `${process.env.NEXT_PUBLIC_API_URL}/medico/id?persona_id=${persona_id}`,
@@ -51,6 +60,7 @@ export default function TurnosDoctor() {
         Authorization: `Bearer ${token}`,
       },
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataIdMedico, offset]);
 
   useEffect(() => {
@@ -112,15 +122,14 @@ export default function TurnosDoctor() {
           <div className="flex flex-col sm:flex-row items-center justify-between">
             <div className="mb-4 sm:mb-0">
               <span className="text-sm text-gray-500">
-                Mostrando {dataTurno && dataTurno.count ? dataTurno.count : 0}{" "}
-                turnos programados
+                Mostrando {turnoCount} turnos programados
               </span>
             </div>
           </div>
         </div>
 
         {/* Tabla de turnos */}
-        {dataTurno && dataTurno.count && (
+        {turnoCount > 0 && (
           <>
             <div className="bg-secondary rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
@@ -172,7 +181,7 @@ export default function TurnosDoctor() {
                     </tr>
                   </thead>
                   <tbody className="bg-card divide-y divide-gray-200">
-                    {dataTurno.rows.map((turno) => (
+                    {turnosRows.map((turno) => (
                       <tr key={turno.id} className="hover:bg-accent">
                         <td className="px-6 py-4 whitespace-nowrap text-sm">
                           {turno.fecha}
@@ -222,9 +231,9 @@ export default function TurnosDoctor() {
                       Mostrando{" "}
                       <span className="font-medium">{offset + 1}</span> a{" "}
                       <span className="font-medium">
-                        {Math.min(offset + limit, dataTurno.count)}
+                        {Math.min(offset + limit, turnoCount)}
                       </span>{" "}
-                      de <span className="font-medium">{dataTurno.count}</span>{" "}
+                      de <span className="font-medium">{turnoCount}</span>{" "}
                       resultados
                     </p>
                   </div>
@@ -272,7 +281,7 @@ export default function TurnosDoctor() {
                             Math.min(prev + limit, (totalPages - 1) * limit)
                           )
                         }
-                        disabled={offset + limit >= dataTurno.count}
+                        disabled={offset + limit >= turnoCount}
                         className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-secondary text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <span className="sr-only">Siguiente</span>

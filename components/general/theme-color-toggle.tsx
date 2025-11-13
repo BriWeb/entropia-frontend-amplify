@@ -3,6 +3,7 @@ import { Select, SelectContent, SelectItem } from "@/components/ui/select";
 import { useThemeContext } from "@/app/context/theme-data-provider";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { ThemeColors } from "@/app/types/theme-types";
 import { SelectTrigger, SelectValue } from "@radix-ui/react-select";
 
 const availableThemeColors = [

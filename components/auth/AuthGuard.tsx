@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { Usuario } from "@/types/usuario";
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ interface AuthGuardProps {
 interface ValidateResponse {
   ok: boolean;
   mensaje: string;
-  usuario?: any;
+  usuario?: Usuario;
 }
 
 export default function AuthGuard({ children }: AuthGuardProps) {
@@ -44,7 +45,7 @@ export default function AuthGuard({ children }: AuthGuardProps) {
           throw new Error(data.mensaje);
         }
 
-        const tipo = data.usuario.tipo_persona_id;
+        const tipo = data.usuario?.tipo_persona_id;
 
         const noPermitida =
           (pathname.startsWith("/doctor") && tipo !== 2) ||
@@ -63,14 +64,15 @@ export default function AuthGuard({ children }: AuthGuardProps) {
         }
 
         setLoading(false);
-      } catch (err) {
+      } catch (error) {
+        console.error(error);
         localStorage.removeItem("myToken");
         router.push("/login");
       }
     };
 
     checkAuth();
-  }, []);
+  }, [pathname, router]);
 
   if (loading) return null;
 
