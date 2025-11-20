@@ -14,6 +14,7 @@ import { ThemeModeToggle } from "@/components/general/theme-mode-toggle";
 import { ThemeColorToggle } from "@/components/general/theme-color-toggle";
 import { useAuth } from "@/app/context/AuthContext";
 import { Usuario } from "@/types/usuario";
+import { Stethoscope } from "lucide-react";
 
 export default function LoginPage() {
   const { setUsuario } = useAuth();
@@ -123,7 +124,8 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4">
       <div className="w-full max-w-md space-y-6 text-center">
-        <div className="space-y-2">
+        <div className="space-y-2 flex flex-col items-center">
+          <Stethoscope className="w-16 h-16 mx-auto text-primary" />
           <h1 className="text-3xl font-bold">Sistema de turnos</h1>
           <p className="text-gray-500">Inicie sesión en su cuenta</p>
         </div>
