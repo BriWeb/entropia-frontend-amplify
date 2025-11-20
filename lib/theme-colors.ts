@@ -192,7 +192,7 @@ const themes: Record<string, any> = {
       destructive: "oklch(0.704 0.191 22.216)",
       border: "oklch(1 0 0 / 10%)",
       input: "oklch(1 0 0 / 15%)",
-      ring: "oklch(0.645 0.246 16.439)",
+      ring: "oklch(0.546 0.245 262.881)",
       chart1: "oklch(0.488 0.243 264.376)",
       chart2: "oklch(0.696 0.17 162.48)",
       chart3: "oklch(0.769 0.188 70.08)",

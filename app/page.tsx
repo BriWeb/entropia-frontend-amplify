@@ -5,112 +5,348 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
-  return (
-    <div className="h-screen bg-white overflow-hidden">
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(0,0,0,0.02)_0%,_transparent_100%)] dark:bg-[radial-gradient(circle_at_30%_30%,_rgba(255,255,255,0.02)_0%,_transparent_100%)]"></div>
-      </div>
+  const navItems = [
+    {
+      name: "Caracteristicas",
+      href: "#features",
+    },
+    {
+      name: "Beneficios",
+      href: "#benefits",
+    },
+    {
+      name: "Tecnologias",
+      href: "#technologies",
+    },
+    {
+      name: "Precios",
+      href: "#pricing",
+    },
+    {
+      name: "Nosotros",
+      href: "#members",
+    },
+  ];
 
-      <main className="h-screen flex items-center px-4 bg-white dark:bg-black">
-        <div className="max-w-6xl mx-auto ">
+  const featureItems = [
+    {
+      title: "Gestión de Pacientes",
+      description:
+        "Administra historiales médicos y datos personales de forma segura y eficiente",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+        />
+      ),
+    },
+    {
+      title: "Control de Citas",
+      description:
+        "Organiza y gestiona las consultas médicas de manera intuitiva",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      ),
+    },
+    {
+      title: "Reportes y Análisis",
+      description:
+        "Genera informes detallados y visualiza estadísticas en tiempo real",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4"
+        />
+      ),
+    },
+    {
+      title: "Seguridad Avanzada",
+      description:
+        "Protección robusta para toda la información médica sensible",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      ),
+    },
+  ];
+
+
+  const membersItems = [
+    {
+      title: "Jose Martínez",
+      description:
+        "Analista de Negocios",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+        />
+      ),
+    },
+    {
+      title: "Lisett Castillo",
+      description:
+        "Product Owner",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      ),
+    },
+    {
+      title: "Brian Herrera",
+      description:
+        "Administrador de Base de Datos",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4"
+        />
+      ),
+    },
+    {
+      title: "Federico Estevez",
+      description:
+        "Desarrollador Backend",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      ),
+    },
+    {
+      title: "Iara Baya",
+      description:
+        "Desarrollador Frontend",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      ),
+    },
+    {
+      title: "Luis Herrera",
+      description:
+        "Desarrollador Backend",
+      icon: (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      ),
+    },
+  ];
+  return (
+    <div className="min-h-screen bg-gray-50 antialiased  flex flex-col">
+      <nav className="sticky top-0 z-50 bg-white dark:bg-secondary border-b border-gray-100 shadow-md">
+        <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 ">
+          <div className="flex justify-between items-center h-16">
+            <a href="#" className="flex items-center space-x-2">
+              <svg
+                className="w-6 h-6 text-black dark:text-white "
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <span className="text-xl font-extrabold text-gray-900 dark:text-white">
+                Sistema de{" "}
+                <span className="text-blue-600">Consultas Médicas</span>
+              </span>
+            </a>
+
+            <div>
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-600 dark:text-white hover:text-blue-600 transition duration-150 font-medium px-3 py-2 rounded-md"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.getElementById(
+                      item.href.substring(1)
+                    );
+                    if (element) element.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Link href="/login">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="bg-black hover:bg-secondary dark:bg-white dark:hover:bg-blue-800 text-white dark:text-black dark:hover:text-white px-8 py-2 text-sm rounded-full transition-colors cursor-pointer"
+                >
+                  {" "}
+                  Iniciar Sesión{" "}
+                </Button>
+              </Link>
+              <Link href="/appointment">
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="bg-black hover:bg-secondary dark:bg-white dark:hover:bg-pink-800 text-white dark:text-black dark:hover:text-white px-8 py-2 text-sm rounded-full transition-colors cursor-pointer"
+                >
+                  Pedir Turno
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main className="flex flex-1 items-center px-4 bg-white dark:bg-black pt-20">
+        <div className="max-w-6xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" id="features">
             <h1 className="text-4xl font-bold text-black dark:text-white">
-              Sistema de Consultas Médicas
+              Sistema de{" "}
+              <span className="text-blue-600">Consultas Médicas</span>
             </h1>
             <p className="text-neutral-600 dark:text-neutral-400 text-lg mt-4 max-w-2xl mx-auto">
               Gestión moderna y eficiente para tu consultorio médico
             </p>
-            <Link href="/login" className="inline-block mt-6">
-              <Button className="bg-black hover:bg-neutral-900 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-black px-8 py-2 text-sm rounded-full transition-colors cursor-pointer">
-                Empezar
-              </Button>
-            </Link>
+            {/* Cards con info */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+              {featureItems.map((feature, index) => (
+                <Card
+                  key={index}
+                  className="group border border-neutral-200 dark:border-neutral-800 bg-transparent hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300"
+                >
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="mb-4">
+                      <div className="p-2 inline-block">
+                        <svg
+                          className="w-6 h-6 text-black dark:text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          {feature.icon}
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-medium text-black dark:text-white mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
-          {/* Cards con info */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Gestión de Pacientes",
-                description:
-                  "Administra historiales médicos y datos personales de forma segura y eficiente",
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                ),
-              },
-              {
-                title: "Control de Citas",
-                description:
-                  "Organiza y gestiona las consultas médicas de manera intuitiva",
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                ),
-              },
-              {
-                title: "Reportes y Análisis",
-                description:
-                  "Genera informes detallados y visualiza estadísticas en tiempo real",
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4"
-                  />
-                ),
-              },
-              {
-                title: "Seguridad Avanzada",
-                description:
-                  "Protección robusta para toda la información médica sensible",
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                ),
-              },
-            ].map((feature, index) => (
-              <Card
-                key={index}
-                className="group border border-neutral-200 dark:border-neutral-800 bg-transparent hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300"
-              >
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="mb-4">
-                    <div className="p-2 inline-block">
-                      <svg
-                        className="w-6 h-6 text-black dark:text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        {feature.icon}
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-medium text-black dark:text-white mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+          <div
+            className=" mx-auto flex justify-between py-[200px]"
+            id="benefits"
+          >
+            <h3 className="font-medium text-6xl h-[300px] sticky top-[300px] ">
+              Beneficios
+            </h3>
           </div>
+
+          <div
+            className=" mx-auto flex justify-between py-[200px]"
+            id="technologies"
+          >
+            <h3 className="font-medium text-6xl h-[300px] sticky top-[300px] ">
+              Tecnologías
+            </h3>
+            <div className="flex flex-col gap-[100px] sticky">
+              <Card className="bg-red-200  w-[700px] h-[300px] sticky top-[300px] rounded-md text-center text-black">
+                Card 1
+              </Card>
+              <Card className="bg-green-200  w-[700px] h-[300px] sticky top-[320px] rounded-md text-center text-black">
+                Card 1
+              </Card>
+              <Card className="bg-blue-200  w-[700px] h-[300px] sticky top-[340px] rounded-md text-center text-black">
+                Card 1
+              </Card>
+              <Card className="bg-yellow-200  w-[700px] h-[300px] sticky top-[360px] rounded-md text-center text-black">
+                Card 1
+              </Card>
+              <Card className="bg-pink-200  w-[700px] h-[300px] sticky top-[380px] rounded-md text-center text-black">
+                Card 1
+              </Card>
+            </div>
+          </div>
+
+              <div className="text-center mb-12" id="members">
+            <h2 className="text-4xl font-bold text-black dark:text-white">
+            Nuestro Equipo
+            </h2>
+            {/* Cards con info */}
+            <div className="flex flex-wrap justify-center gap-6 mt-10">
+              {membersItems.map((feature, index) => (
+                <Card
+                  key={index}
+                  className="w-[250px] border border-neutral-200 dark:border-primery bg-transparent hover:bg-neutral-50 dark:hover:bg-primary transition-all duration-300"
+                >
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="mb-4">
+                      <div className="p-2 inline-block">
+                        <svg
+                          className="w-6 h-6 text-black dark:text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          {feature.icon}
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-medium text-black dark:text-white mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
         </div>
       </main>
 
