@@ -3,8 +3,44 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedCard } from "@/components/ui/animated-card";
+
 
 export default function Home() {
+
+  const testimonials = [
+  {
+    quote:
+      "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+    name: "Comodidad 24 x 7",
+    src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    quote:
+      "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+    name: "Reduccion de esperas",
+    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    quote:
+      "This solution has significantly improved our team's productivity. ",
+    name: "Recordatorios automaticos",
+    src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    quote:
+      "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
+    name: "Optimizacion de flujo de trabajo",
+    src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    quote:
+      "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+    name: "Mejor gestion del tiempo médico",
+    src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
   const navItems = [
     {
       name: "Caracteristicas",
@@ -83,12 +119,10 @@ export default function Home() {
     },
   ];
 
-
   const membersItems = [
     {
       title: "Jose Martínez",
-      description:
-        "Analista de Negocios",
+      description: "Analista de Negocios",
       icon: (
         <path
           strokeLinecap="round"
@@ -100,8 +134,7 @@ export default function Home() {
     },
     {
       title: "Lisett Castillo",
-      description:
-        "Product Owner",
+      description: "Product Owner",
       icon: (
         <path
           strokeLinecap="round"
@@ -113,8 +146,7 @@ export default function Home() {
     },
     {
       title: "Brian Herrera",
-      description:
-        "Administrador de Base de Datos",
+      description: "Administrador de Base de Datos",
       icon: (
         <path
           strokeLinecap="round"
@@ -126,8 +158,7 @@ export default function Home() {
     },
     {
       title: "Federico Estevez",
-      description:
-        "Desarrollador Backend",
+      description: "Desarrollador Backend",
       icon: (
         <path
           strokeLinecap="round"
@@ -139,8 +170,7 @@ export default function Home() {
     },
     {
       title: "Iara Baya",
-      description:
-        "Desarrollador Frontend",
+      description: "Desarrollador Frontend",
       icon: (
         <path
           strokeLinecap="round"
@@ -152,8 +182,7 @@ export default function Home() {
     },
     {
       title: "Luis Herrera",
-      description:
-        "Desarrollador Backend",
+      description: "Desarrollador Backend",
       icon: (
         <path
           strokeLinecap="round"
@@ -166,7 +195,7 @@ export default function Home() {
   ];
   return (
     <div className="min-h-screen bg-gray-50 antialiased  flex flex-col">
-      <nav className="sticky top-0 z-50 bg-white dark:bg-secondary border-b border-gray-100 shadow-md">
+      <nav className="sticky hidden top-0 z-50 bg-white dark:bg-primary border-b border-gray-100 shadow-md md:contents">
         <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="flex justify-between items-center h-16">
             <a href="#" className="flex items-center space-x-2">
@@ -234,7 +263,7 @@ export default function Home() {
       </nav>
 
       <main className="flex flex-1 items-center px-4 bg-white dark:bg-black pt-20">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto md:w-full">
           {/* Header Section */}
           <div className="text-center mb-12" id="features">
             <h1 className="text-4xl font-bold text-black dark:text-white">
@@ -245,7 +274,7 @@ export default function Home() {
               Gestión moderna y eficiente para tu consultorio médico
             </p>
             {/* Cards con info */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
               {featureItems.map((feature, index) => (
                 <Card
                   key={index}
@@ -277,43 +306,45 @@ export default function Home() {
           </div>
 
           <div
-            className=" mx-auto flex justify-between py-[200px]"
+            className="mx-auto flex flex-col md:flex-row justify-between py-5 md:py-[100px]"
             id="benefits"
           >
-            <h3 className="font-medium text-6xl h-[300px] sticky top-[300px] ">
+            <h3 className="font-medium text-3xl md:text-6xl text-center ">
               Beneficios
             </h3>
+
+             <AnimatedCard cardInfo={testimonials} />
           </div>
 
           <div
-            className=" mx-auto flex justify-between py-[200px]"
+            className=" mx-auto flex flex-col md:flex-row justify-between py-5 md:py-[100px]"
             id="technologies"
           >
-            <h3 className="font-medium text-6xl h-[300px] sticky top-[300px] ">
+            <h3 className="font-medium text-3xl md:text-6xl text-center h-[50px] md:h-[200px] sticky top-[100px] md:top-[300px]">
               Tecnologías
             </h3>
-            <div className="flex flex-col gap-[100px] sticky">
-              <Card className="bg-red-200  w-[700px] h-[300px] sticky top-[300px] rounded-md text-center text-black">
-                Card 1
+            <div className="flex flex-col gap-[80px] sticky">
+              <Card className="bg-red-200 w-full md:w-[700px] h-[300px] sticky top-[160px] md:top-[300px] rounded-md text-center text-black font-bold px-20">
+                Gestion de versionado con Git
               </Card>
-              <Card className="bg-green-200  w-[700px] h-[300px] sticky top-[320px] rounded-md text-center text-black">
-                Card 1
+              <Card className="bg-green-200 w-full md:w-[700px] h-[300px] sticky top-[180px] md:top-[320px] rounded-md text-center text-black font-bold px-20">
+                Base de Datos SQL server
               </Card>
-              <Card className="bg-blue-200  w-[700px] h-[300px] sticky top-[340px] rounded-md text-center text-black">
-                Card 1
+              <Card className="bg-blue-200 w-full md:w-[700px] h-[300px] sticky top-[200px] md:top-[340px] rounded-md text-center text-black font-bold px-20">
+                Containers de Docker
               </Card>
-              <Card className="bg-yellow-200  w-[700px] h-[300px] sticky top-[360px] rounded-md text-center text-black">
-                Card 1
+              <Card className="bg-yellow-200 w-full md:w-[700px] h-[300px] sticky top-[220px] md:top-[360px] rounded-md text-center text-black font-bold px-20">
+                Back end con Express y Node.js
               </Card>
-              <Card className="bg-pink-200  w-[700px] h-[300px] sticky top-[380px] rounded-md text-center text-black">
-                Card 1
+              <Card className="bg-pink-200 w-full md:w-[700px] h-[300px] sticky top-[240px] md:top-[380px] rounded-md text-center text-black font-bold px-20">
+               Front end con Next.js (framework de React)
               </Card>
             </div>
           </div>
 
-              <div className="text-center mb-12" id="members">
+          <div className="text-center mb-12" id="members">
             <h2 className="text-4xl font-bold text-black dark:text-white">
-            Nuestro Equipo
+              Nuestro Equipo
             </h2>
             {/* Cards con info */}
             <div className="flex flex-wrap justify-center gap-6 mt-10">
@@ -347,6 +378,31 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="text-center mb-12" id="members">
+            <h2 className="text-4xl font-bold text-black dark:text-white">
+              Live Demo
+            </h2>
+            <div className="flex items-center justify-center gap-2 py-10">
+              <Link href="/login">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="bg-black hover:bg-secondary dark:bg-white dark:hover:bg-blue-800 text-white dark:text-black dark:hover:text-white px-8 py-2 text-sm rounded-full transition-colors cursor-pointer"
+                >
+                  Iniciar Sesión
+                </Button>
+              </Link>
+              <Link href="/appointment">
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="bg-black hover:bg-secondary dark:bg-white dark:hover:bg-pink-800 text-white dark:text-black dark:hover:text-white px-8 py-2 text-sm rounded-full transition-colors cursor-pointer"
+                >
+                  Pedir Turno
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
 
