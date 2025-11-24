@@ -53,7 +53,6 @@ export function useFetch<T = unknown>({
           headers: finalHeaders,
           body: body ? JSON.stringify(body) : undefined,
           mode: "cors",
-          credentials: "include",
         });
         const json = await response.json();
 
