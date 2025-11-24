@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Link from "next/link";
@@ -19,25 +20,25 @@ export default function Home() {
     {
       quote:
         "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-      name: "Reduccion de esperas",
+      name: "Reducción de esperas",
       src: "/images/foto2.jpg",
     },
     {
       quote:
         "This solution has significantly improved our team's productivity. ",
-      name: "Recordatorios automaticos",
+      name: "Recordatorios automáticos",
       src: "/images/foto3.jpg",
     },
     {
       quote:
         "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
-      name: "Optimizacion de flujo de trabajo",
+      name: "Optimización de flujo de trabajo",
       src: "/images/foto4.jpg",
     },
     {
       quote:
         "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
-      name: "Mejor gestion del tiempo médico",
+      name: "Mejor gestión del tiempo médico",
       src: "/images/medicos.png",
     },
   ];
@@ -283,20 +284,29 @@ export default function Home() {
               Tecnologías
             </h3>
             <div className="flex flex-col  sticky px-4 md:px-0 w-full gap-[80px]">
-              <Card className="bg-black border-4 shadow-[0_0_10px] shadow-orange-400/30  border-orange-400 w-full md:w-[100%] h-[300px] sticky top-[160px] md:top-[300px] rounded-xl text-center text-white font-bold px-20">
+              <Card className="bg-black border-4 flex flex-col justify-center items-center shadow-[0_0_10px] shadow-orange-400/30  border-orange-400 w-full md:w-[100%] h-[350px] sticky top-[160px] md:top-[300px] rounded-xl text-center text-white font-bold px-20">
                 Gestion de versionado con Git
+                <img src="/images/logos/git-logo.png" alt="next logo" className="w-80 bg-white rounded-2xl p-2" />
+
               </Card>
-              <Card className="bg-black border-4  shadow-[0_0_10px] shadow-indigo-400/30  border-indigo-400 w-full md:w-[100%] h-[300px] sticky top-[180px] md:top-[320px] rounded-xl text-center text-white font-bold px-20">
+              <Card className="bg-black border-4 flex flex-col justify-center items-center  shadow-[0_0_10px] shadow-indigo-400/30  border-indigo-400 w-full md:w-[100%] h-[350px] sticky top-[180px] md:top-[320px] rounded-xl text-center text-white font-bold px-20">
                 Base de Datos SQL server
+                <img src="/images/logos/sql-server-logo.png" alt="next logo" className="w-60 bg-white rounded-2xl p-2" />
+
               </Card>
-              <Card className="bg-black border-4  shadow-[0_0_10px] shadow-blue-400/30  border-blue-400 w-full md:w-[100%] h-[300px] sticky top-[200px] md:top-[340px] rounded-xl text-center text-white font-bold px-20">
+              <Card className="bg-black border-4 flex flex-col justify-center items-center  shadow-[0_0_10px] shadow-blue-400/30  border-blue-400 w-full md:w-[100%] h-[350px] sticky top-[200px] md:top-[340px] rounded-xl text-center text-white font-bold px-20">
                 Containers de Docker
+                <img src="/images/logos/docker-logo.png" alt="next logo" className="w-80 bg-white rounded-2xl p-2" />
+
               </Card>
-              <Card className="bg-black border-4  shadow-[0_0_10px] shadow-green-400/30  border-green-400 w-full md:w-[100%] h-[300px] sticky top-[220px] md:top-[360px] rounded-xl text-center text-white font-bold px-20">
+              <Card className="bg-black border-4 flex flex-col justify-center items-center  shadow-[0_0_10px] shadow-green-400/30  border-green-400 w-full md:w-[100%] h-[350px] sticky top-[220px] md:top-[360px] rounded-xl text-center text-white font-bold px-20">
                 Back end con Express y Node.js
+                <img src="/images/logos/node-logo.png" alt="next logo" className="w-80 bg-white rounded-2xl p-2" />
+
               </Card>
-              <Card className="bg-black border-4  shadow-[0_0_10px] shadow-slate-400/30  border-slate-400 w-full md:w-[100%] h-[300px] sticky top-[240px] md:top-[380px] rounded-xl text-center text-white font-bold px-20">
+              <Card className="bg-black border-4 flex flex-col justify-center items-center  shadow-[0_0_10px] shadow-slate-400/30  border-slate-400 w-full md:w-[100%] h-[350px] sticky top-[240px] md:top-[380px] rounded-xl text-center text-white font-bold px-20">
                 Front end con Next.js (framework de React)
+                <img src="/images/logos/next-logo.png" alt="next logo" className="w-60" />
               </Card>
             </div>
           </div>
@@ -329,6 +339,7 @@ export default function Home() {
                       className="w-40 h-w-40 rounded-full"
                       src={member.image}
                       alt={`foto de ${member.name}`}
+                      quality={100}
                     />
 
                     <h3 className="text-lg font-medium text-black dark:text-white my-3">

@@ -42,7 +42,14 @@ export const CarouselCard: React.FC<CardProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
-      <Image src={image} alt={image}  width={100} height={100} className="bg-white w-48 h-48 md:w-full md:h-full object-cover rounded-full md:rounded-2xl px-1 md:px-0 " />
+      <Image
+        quality={100}
+        src={image}
+        alt={image}
+        width={100}
+        height={100}
+        className="bg-white w-48 h-48 md:w-full md:h-full object-cover rounded-full md:rounded-2xl px-1 md:px-0 "
+      />
       <div className="flex flex-col items-center mt-2 md:hidden ">
         <h3 className="font-bold mb-2">{title}</h3>
         <p className="text-center text-sm">{description}</p>
