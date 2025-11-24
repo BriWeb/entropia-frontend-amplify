@@ -30,6 +30,8 @@ export function useFetchCallback<T = unknown>() {
           method,
           headers,
           body: body ? JSON.stringify(body) : undefined,
+          mode: "cors",
+          credentials: "include",
         });
         const json = await response.json();
 
