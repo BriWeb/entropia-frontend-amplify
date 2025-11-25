@@ -44,6 +44,7 @@ export const CarouselCard: React.FC<CardProps> = ({
       </AnimatePresence>
       <Image
         quality={100}
+        unoptimized= {true}
         src={image}
         alt={image}
         width={100}

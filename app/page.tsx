@@ -13,33 +13,33 @@ export default function Home() {
   const testimonials = [
     {
       quote:
-        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+        "Se pueden hacer las solitiudes y gestion de turnos en cualquier momento y lugar.",
       name: "Comodidad 24 x 7",
       src: "/images/foto1.jpg",
     },
     {
       quote:
-        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+        "Se evitan las esperas para conseguir turno y se optimiza el tiempo entre turnos.",
       name: "Reducción de esperas",
       src: "/images/foto2.jpg",
     },
     {
       quote:
-        "This solution has significantly improved our team's productivity. ",
-      name: "Recordatorios automáticos",
-      src: "/images/foto3.jpg",
-    },
-    {
-      quote:
-        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
+        "Facilidad de manejo de turnos entre recepcion y el equipo médico.",
       name: "Optimización de flujo de trabajo",
       src: "/images/foto4.jpg",
     },
     {
       quote:
-        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+        "Se puede modificar el estado del turno de forma simple y con impacto inmediato.",
       name: "Mejor gestión del tiempo médico",
       src: "/images/medicos.png",
+    },
+        {
+      quote:
+        "Se mantiene comunicacion constante entre recepcion, médicos y pacientes mediante mails y notificaciones.",
+      name: "Recordatorios automáticos",
+      src: "/images/foto3.jpg",
     },
   ];
 
@@ -130,12 +130,12 @@ export default function Home() {
     {
       name: "Lisett Castillo",
       description: "Product Owner",
-      image: "/images/profile/perfil-fede.jpg",
+      image: "/images/profile/perfil-lisett.jpg",
     },
     {
       name: "Brian Herrera",
       description: "Administrador de Base de Datos",
-      image: "/images/profile/perfil-fede.jpg",
+      image: "/images/profile/perfil-brian.jpg",
     },
     {
       name: "Federico Estevez",
@@ -336,10 +336,11 @@ export default function Home() {
                     <Image
                       width={50}
                       height={50}
-                      className="w-40 h-w-40 rounded-full"
+                      className="w-40 h-40 rounded-full"
                       src={member.image}
                       alt={`foto de ${member.name}`}
                       quality={100}
+                      unoptimized= {true}
                     />
 
                     <h3 className="text-lg font-medium text-black dark:text-white my-3">
