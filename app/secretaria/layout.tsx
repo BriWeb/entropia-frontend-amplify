@@ -10,6 +10,7 @@ import {
   Settings,
   Menu,
   X,
+  CalendarArrowUp,
 } from "lucide-react";
 import LogoutButton from "@/components/ui/logout-button";
 import Link from "next/link";
@@ -108,6 +109,13 @@ export default function SecretariaLayout({
                   >
                     <Users size={20} />
                     <span>Pacientes</span>
+                  </Link>
+                  <Link
+                    href="/secretaria/solicitudes"
+                    className="flex items-center gap-2 p-2 hover:text-accent hover:bg-primary rounded-lg"
+                  >
+                    <CalendarArrowUp size={20} />
+                    <span>Solicitudes</span>
                   </Link>
                   <Link
                     href="/secretaria/configuracion"
