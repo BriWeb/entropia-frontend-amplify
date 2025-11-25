@@ -1,23 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"; // pára que Next.js sepa que el codigo se ejecuta en el navegador y no en el servidor
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button-custom";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import Loading from "@/components/ui/loading";
-import Error from "@/components/ui/error";
 
 import { useFetchCallback } from "@/hooks/useFetchCallback";
 import { ThemeModeToggle } from "@/components/general/theme-mode-toggle";
 import { ThemeColorToggle } from "@/components/general/theme-color-toggle";
-import { useAuth } from "@/app/context/AuthContext";
-import { Usuario } from "@/types/usuario";
 import { AtSign, CalendarCheck, IdCard, Stethoscope, User } from "lucide-react";
 import { useFetch } from "@/hooks/useFetch";
 import { Especialidad } from "@/types/especialidad";
@@ -38,19 +32,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-interface AppointmentResponse {
-  token: string;
-  usuario: Usuario;
-}
-
 export default function AppointmentRequestPage() {
   const router = useRouter();
-  const [rememberMe, setRememberMe] = useState(false);
+  // const [rememberMe, setRememberMe] = useState(false);
 
   const formSchema = z.object({
     firstName: z
       .string()
-      .min(5, "El nombre debe tener al menos 3 caracteres.")
+      .min(3, "El nombre debe tener al menos 3 caracteres.")
       .max(32, "Has llegado al maximo de caracteres para el nombre."),
     lastName: z
       .string()
@@ -75,18 +64,28 @@ export default function AppointmentRequestPage() {
     },
   });
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(null);
+  const { loading, fetchNow } = useFetchCallback();
 
 
-  // const { loading, data, error, fetchNow } = useFetchCallback<LoginResponse>();
-
-  const queryParams = new URLSearchParams();
+    const handleSolicitarTurno = (data: z.infer<typeof formSchema>) => {
+    fetchNow({
+      url: `${process.env.NEXT_PUBLIC_API_URL}/solicitud/add`,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: {
+        nombre: data.firstName,
+        apellido: data.lastName,
+        documento: data.idNumber,
+        email: data.email,
+        especialidad_id: data.specialty,
+      },
+    });
+  };
 
   const {
-    loading: loadingEspecialidades,
     data: dataEspecialidades,
-    error: errorEspecialidades,
   } = useFetch<Especialidad[]>({
     url: `${process.env.NEXT_PUBLIC_API_URL}/solicitud/especialidades`,
   });
@@ -94,6 +93,11 @@ export default function AppointmentRequestPage() {
   function onSubmit(data: z.infer<typeof formSchema>) {
     // Do something with the form values.
     console.log(data);
+    handleSolicitarTurno(data);
+    form.reset();
+    if(!loading && data) {
+      router.push("/thank-you-page")
+    }
   }
 
   return (
