@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button-custom";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Loading from "@/components/ui/loading";

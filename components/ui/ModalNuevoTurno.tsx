@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button-custom";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@/components/ui/label-custom";
 import Loading from "@/components/ui/loading";
 import Error from "@/components/ui/error";
 import {
