@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button-custom";
 import { useAuth } from "@/app/context/AuthContext";
 import AuthGuard from "@/components/auth/AuthGuard";
 

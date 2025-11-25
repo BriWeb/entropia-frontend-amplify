@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button-custom";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import InfiniteScroll from "@/components/ui/infinite-carousel";
@@ -369,7 +369,7 @@ export default function Home() {
                   Iniciar Sesión
                 </Button>
               </Link>
-              <Link href="/appointment">
+              <Link href="/appointment-request">
                 <Button
                   variant="default"
                   size="sm"
