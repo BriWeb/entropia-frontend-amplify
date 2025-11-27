@@ -208,7 +208,7 @@ export default function Home() {
                   Iniciar Sesión{" "}
                 </Button>
               </Link>
-              <Link href="/appointment">
+              <Link href="/appointment-request">
                 <Button
                   variant="default"
                   size="sm"
